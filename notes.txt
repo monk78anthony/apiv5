@@ -1,0 +1,4 @@
+Git/TF Cloud
+---------------
+https://learn.hashicorp.com/tutorials/terraform/github-actions?in=terraform/automation
+API Token Wn5F9W1eVFUaWQ.atlasv1.cAs0Q5JpuHzCEuTFMR7WvWoj4fUHENPXF5BW0YtLUzCARuT83aMXTktO7k2uOJ8dlOk
