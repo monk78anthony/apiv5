@@ -10,6 +10,11 @@ jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
+    # Set the working directory to main for the config files
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./main./apiv5/tree/main/terraform/uat/services/dynamodb
     steps:
       - name: Checkout
         uses: actions/checkout@v3
