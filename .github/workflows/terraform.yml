@@ -24,20 +24,20 @@ jobs:
 
       - name: Terraform Format
         id: fmt
-        run: terraform -chdir=terraform/uat/services/dynamodb fmt -check
+        run: terraform -chdir=uat fmt -check
         
       - name: Terraform Init
         id: init
-        run: terraform -chdir=terraform/uat/services/dynamodb init
+        run: terraform -chdir=uat init
       
       - name: Terraform Validate
         id: validate
-        run: terraform -chdir=terraform/uat/services/dynamodb validate -no-color
+        run: terraform -chdir=uat validate -no-color
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform -chdir=terraform/uat/services/dynamodb plan -no-color -input=false
+        run: terraform -chdir=uat plan -no-color -input=false
         continue-on-error: true
 
       - uses: actions/github-script@v6
@@ -69,4 +69,4 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir=terraform/uat/services/dynamodb apply -auto-approve -input=false
+        run: terraform -chdir=uat apply -auto-approve -input=false
