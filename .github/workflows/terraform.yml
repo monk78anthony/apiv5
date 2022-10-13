@@ -30,16 +30,18 @@ jobs:
       - name: Terraform Init
         id: init
         working-directory: ./terraform/uat/services/dynamodb
-        run: terraform -chdir=./terraform/uat/services/dynamodb/ init
+        run: terraform init
       
       - name: Terraform Validate
         id: validate
-        run: terraform -chdir=./terraform/uat/services/dynamodb/ validate -no-color
+        working-directory: ./terraform/uat/services/dynamodb
+        run: terraform validate -no-color
 
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
-        run: terraform -chdir=./terraform/uat/services/dynamodb/ plan -no-color -input=false
+        working-directory: ./terraform/uat/services/dynamodb
+        run: terraform plan -no-color -input=false
         continue-on-error: true
 
       - uses: actions/github-script@v6
@@ -71,4 +73,5 @@ jobs:
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform -chdir=./terraform/uat/services/dynamodb/ apply -auto-approve -input=false
+        working-directory: ./terraform/uat/services/dynamodb
+        run: terraform apply -auto-approve -input=false
