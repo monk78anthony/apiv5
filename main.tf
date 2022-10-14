@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_dynamodb_table" "apiv5" { 
    name = var.table_name 
    billing_mode = "PROVISIONED" 
