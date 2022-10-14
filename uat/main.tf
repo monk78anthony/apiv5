@@ -12,16 +12,7 @@ terraform {
     workspaces {
       name = "apiv5"
     }
-
-    backend "s3" {
-    bucket = "nec-registry"
-    key    = "apiv5/terraform.tfstate"
-    region = "us-east-1"
-    
-    dynamodb_table = "nec-tfstate-ddb"
-    encrypt        = "true"
   }
-}
 }
 
 provider "aws" {
